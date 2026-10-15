@@ -1,0 +1,93 @@
+# authorization endpoints
+
+# api call for creating user account
+###
+POST http://127.0.0.1:8000/v1/spending/register/ 
+Content-Type: application/json
+
+{
+    "username":"user1",
+    "email":"user1@gmail.com",
+    "password":"Password@123"
+}
+
+#api call for generating token
+###
+POST http://127.0.0.1:8000/v1/spending/token/ 
+Content-Type: application/json
+
+{
+    "username":"user1",
+    "password":"Password@123"
+}
+
+# api call for get cuurent user details
+###
+GET http://127.0.0.1:8000/v1/spending/me/ 
+Accept: application/json
+Authorization: Token bb59e642d34591e3522c4a3417a401611f11865a 
+
+#======== Expense endpoints =============
+
+#api call for list expenses
+###
+GET http://127.0.0.1:8000/v1/spending/expenses/ 
+Accept: application/json
+Authorization: Token bb59e642d34591e3522c4a3417a401611f11865a
+
+#api call for create an expense
+###
+POST http://127.0.0.1:8000/v1/spending/expenses/ 
+Content-Type: application/json 
+Authorization: Token bb59e642d34591e3522c4a3417a401611f11865a
+
+{
+    "title":"food",
+    "amount":5000,
+    "category":"FOOD",
+    "payment_method":"upi"
+
+}
+
+#api call for fetching
+###
+GET http://127.0.0.1:8000/v1/spending/expenses/2/ 
+Accept: application/json
+Authorization: Token bb59e642d34591e3522c4a3417a401611f11865a
+
+#api call for updating
+###
+PUT http://127.0.0.1:8000/v1/spending/expenses/1/ 
+Content-Type: application/json
+Authorization: Token bb59e642d34591e3522c4a3417a401611f11865a
+
+{
+    "id": 1,
+    "title": "medicine",
+    "amount": "4000.00",
+    "category": "HEALTH",
+    "priority": "need",
+    "payment_method": "upi",
+    "created_at": "2026-10-09T06:08:18.937671Z",
+    "updated_at": "2026-10-09T06:08:18.937775Z",
+    "owner": 2
+  }
+
+#api call for delete
+###
+DELETE http://127.0.0.1:8000/v1/spending/expenses/3/ 
+Accept: application/json 
+Authorization: Token bb59e642d34591e3522c4a3417a401611f11865a
+
+#api call for summary
+###
+GET http://127.0.0.1:8000/v1/spending/expenses/summary/  
+Accept: application/json
+Authorization: Token bb59e642d34591e3522c4a3417a401611f11865a
+
+
+#api call for budget plan
+###
+GET http://127.0.0.1:8000/v1/spending/budget/  
+Accept: application/json
+Authorization: Token bb59e642d34591e3522c4a3417a401611f11865a
